@@ -64,8 +64,17 @@ function openUpdateModal(id) {
             </template>
 
             <template v-if="column.dataIndex === 'role'">
-                <a-select :disabled="record.role === 'admin'" placeholder="Rolni tanlang" style="width: 150px;"
+                <a-select :disabled="record.role === 'admin'" placeholder="Rolni tanlang" style="width: 100px;"
                     :options="roles" v-model:value="record.role" @change="(value) => roleChange(value, record._id)" />
+            </template>
+
+            <template v-if="column.dataIndex === 'phone'">
+                <a target="_blank" class="!text-black !font-semibold border-b border-black" href="tel:"> {{ record.phone }}</a>
+            </template>
+
+            <template v-if="column.dataIndex === 'userName'">
+                <a target="_blank" class="!text-black !font-semibold border-b border-black" :href="`http://t.me/${record.userName}`"> {{
+                    record.userName }}</a>
             </template>
 
             <template v-if="column.dataIndex === 'actions'">

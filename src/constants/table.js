@@ -8,17 +8,27 @@ export const usersColumns = () => {
     {
       title: "Ismi",
       dataIndex: "name",
-      width: 150,
+      width: 120,
     },
     {
       title: "Familyasi",
       dataIndex: "surname",
-      width: 150,
+      width: 120,
     },
     {
       title: "Darajasi",
       dataIndex: "role",
-      width: 150,
+      width: 120,
+    },
+    {
+      title: "Telefon Raqami",
+      dataIndex: "phone",
+      width: 80,
+    },
+    {
+      title: "Foydalanuvchi nomi",
+      dataIndex: "userName",
+      width: 80,
     },
     {
       title: "Amallar",
