@@ -8,20 +8,24 @@ const useMe = defineStore("user", {
     loader: false,
   }),
 
-  actions: {
-    getUserMe() {
-      this.loader = true;
+  getters: {
+    isAuth: (state) => !!state.userInfo && !!state.userInfo._id,
+    role: (state) => state.userInfo?.role || null,
+  },
 
-      ApiGetUserMe()
-        .then(({ data }) => {
-          this.userInfo = data;
-        })
-        .catch((getErr) => {
-          message.error(getErr);
-        })
-        .finally(() => {
-          this.loader = false;
-        });
+  actions: {
+    async getUserMe() {
+      this.loader = true;
+      try {
+        const { data } = await ApiGetUserMe();
+        this.userInfo = data;
+        return data;
+      } catch (err) {
+        message.error("Foydalanuvchini olishda xato!");
+        throw err;
+      } finally {
+        this.loader = false;
+      }
     },
   },
 });
