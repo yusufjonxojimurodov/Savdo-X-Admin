@@ -10,6 +10,7 @@ import { message } from "ant-design-vue";
 const useUsers = defineStore("users", {
   state: () => ({
     users: [],
+    totalElements: null,
     page: 0,
     size: 10,
     loader: false,
@@ -23,6 +24,7 @@ const useUsers = defineStore("users", {
       ApiGetUsers()
         .then(({ data }) => {
           this.users = data.users;
+          this.totalElements = data.totalUsers;
         })
         .catch((getError) => {
           message.error(getError);

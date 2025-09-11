@@ -6,6 +6,7 @@ import ProductsView from "../pages/dashboard/products-page/ProductsView.vue";
 import StatisticView from "../pages/dashboard/platform-statistic/StatisticView.vue";
 import ForbiddenView from "../components/ForbiddenView.vue";
 import useMe from "../stores/me.pinia";
+import ServerOffline from "../components/ServerOffline.vue";
 
 const routes = [
   { path: "/", name: "Login", component: AuthView },
@@ -35,6 +36,7 @@ const routes = [
     ],
   },
   { path: "/403", name: "Forbidden", component: ForbiddenView },
+  { path: "/500", name: "500", component: ServerOffline },
 ];
 
 const router = createRouter({

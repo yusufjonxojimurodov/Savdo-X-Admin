@@ -7,6 +7,7 @@ import IconEdit from '../../../../components/icons/IconEdit.vue';
 import UpdateProfileComponent from '../../../../components/modals/UpdateProfileComponent.vue';
 import { ref } from 'vue';
 import useQueryParams from '../../../../composables/useQueryParams';
+import PaginationComponent from '../../../../components/PaginationComponent.vue';
 
 const usersStore = useUsers()
 const userColumn = usersColumns()
@@ -48,7 +49,7 @@ function openUpdateModal(id) {
 </script>
 
 <template>
-    <a-table :columns="userColumn" :data-source="usersStore.users" :loading="usersStore.loader">
+    <a-table :columns="userColumn" :pagination="false" :data-source="usersStore.users" :loading="usersStore.loader">
         <template #emptyText>
             <emtpy-component v-if="!usersStore.loader" title="Ma'lumot topilmadi"
                 description="Platformada userlar borligiga ishonch hosil qiling yoki internetingizni tekshiring" />
@@ -69,12 +70,14 @@ function openUpdateModal(id) {
             </template>
 
             <template v-if="column.dataIndex === 'phone'">
-                <a target="_blank" class="!text-black !font-semibold border-b border-black" href="tel:"> {{ record.phone }}</a>
+                <a target="_blank" class="!text-black !font-semibold border-b border-black" href="tel:"> {{ record.phone
+                }}</a>
             </template>
 
             <template v-if="column.dataIndex === 'userName'">
-                <a target="_blank" class="!text-black !font-semibold border-b border-black" :href="`http://t.me/${record.userName}`"> {{
-                    record.userName }}</a>
+                <a target="_blank" class="!text-black !font-semibold border-b border-black"
+                    :href="`http://t.me/${record.userName}`"> {{
+                        record.userName }}</a>
             </template>
 
             <template v-if="column.dataIndex === 'actions'">
@@ -100,5 +103,7 @@ function openUpdateModal(id) {
         </template>
     </a-table>
 
+    <pagination-component :total="usersStore.totalElements" :current-page="usersStore.page + 1"
+        :page-size="usersStore.size" />
     <update-profile-component v-model:open="openUpdateProfileModal" />
 </template>

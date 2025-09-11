@@ -2,14 +2,14 @@ import api from "../utils/api/api";
 
 export function ApiGetUsers() {
   return api({
-    url: "/api/all/users",
+    url: "/api/users/all/users",
     method: "GET",
   });
 }
 
 export function ApiUpdateRole(role, id) {
   return api({
-    url: `/api/update-role/${id}`,
+    url: `/api/users/update-role/${id}`,
     method: "PUT",
     data: role,
   });
@@ -24,7 +24,7 @@ export function ApiDeleteUser(id) {
 
 export function ApiUpdateUser(id, form) {
   return api({
-    url: `/api/admin/update-user/${id}`,
+    url: `/api/users/admin/update-user/${id}`,
     method: "PUT",
     data: form,
   });
