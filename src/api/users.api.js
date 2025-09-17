@@ -9,7 +9,7 @@ export function ApiGetUsers() {
 
 export function ApiUpdateRole(role, id) {
   return api({
-    url: `/api/users/update-role/${id}`,
+    url: `/api/users/update/role/${id}`,
     method: "PUT",
     data: role,
   });
